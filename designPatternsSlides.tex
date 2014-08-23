@@ -8,6 +8,7 @@
 \usepackage{listings}
 \usepackage{color}
 \usepackage{minted}
+\usepackage[normalem]{ulem}
 \usepackage{beamerthemeOTS}
 
 \title
@@ -34,8 +35,14 @@
 
 \begin{frame}
 \frametitle {Introduction}
-
-
+  \textbf{Design Patterns}, what is all the fuss about?
+\begin{itemize}
+ \item Mantra uttered over and over by old bearded gurus
+ \item Scary diagrams
+ \item Abstract, mysterious names
+ \item universal magical answer to the spaghetti code I end up having at the end of my project
+\end{itemize}
+\centering \only<2->{\alert {Let's demystifies\dots}}
 \end{frame}
 
 \begin{frame}
@@ -46,10 +53,29 @@
 
 \section{Engineering techniques}
 \begin{frame}
-\frametitle {}
+\frametitle {History}
+\begin{itemize}
+ \item \textbf{Design Patterns}: invented by \only<1>{software}\only <2->{\emph{\sout{software}}} Architect, \emph{Christopher Alexander}.\pause
+ \item \pause \textbf{Design Patterns: Elements of Reusable Object-Oriented Software} 1994, \\
+authored by the \textbf{Gang Of Four} (\emph{Erich Gamma, Richard Helm, Ralph Johnson and John Vlissides}).
+ \item \pause Since then, countless books on how to apply many more patterns to many specific languages and problems.
+\end{itemize}
+
+
 
 
 \end{frame}
+\begin{frame}
+ \frametitle{Reusable techniques solving recurring problems}
+They are \textbf{not}:
+  \begin{itemize}
+   \item tools
+   \item ready made one fits all solutions
+  \end{itemize}
+
+\end{frame}
+
+
 
 \begin{frame}
 \frametitle {An analogy: Surgical knots}
@@ -57,7 +83,7 @@
 
 \end{frame}
 %history, genesis
-% GoF
+% GoFs
 \section{Categories}
 
 \section{Concrete examples}
