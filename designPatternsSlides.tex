@@ -57,7 +57,7 @@
 \begin{itemize}
  \item \textbf{Design Patterns}: invented by \only<1>{software}\only <2->{\emph{\sout{software}}} Architect, \emph{Christopher Alexander}.\pause
  \item \pause \textbf{Design Patterns: Elements of Reusable Object-Oriented Software} 1994, \\
-authored by the \textbf{Gang Of Four} (\emph{Erich Gamma, Richard Helm, Ralph Johnson and John Vlissides}).
+authored by the \textbf{Gang Of Four} (\emph{Erich Gamma, Richard Helm, Ralph Johnson and John Vlissides}) popularised the concept in Computer science.
  \item \pause Since then, countless books on how to apply many more patterns to many specific languages and problems.
 \end{itemize}
 
@@ -69,32 +69,173 @@ authored by the \textbf{Gang Of Four} (\emph{Erich Gamma, Richard Helm, Ralph Jo
  \frametitle{Reusable techniques solving recurring problems}
 They are \textbf{not}:
   \begin{itemize}
-   \item tools
+   \item tools (tools are editors or IDEs)
    \item ready made one fits all solutions
   \end{itemize}
-
 \end{frame}
 
 
 
 \begin{frame}
-\frametitle {An analogy: Surgical knots}
-
-
+\frametitle {Reusable techniques solving recurring problems}
+A Pattern is only complete if it comes with:
+\begin{itemize}
+ \item a typical situation along with why it causes trouble
+ \item a solution and the reason it is a good one.
+ \item a context, when to apply to it.
+\end{itemize}
 \end{frame}
-%history, genesis
-% GoFs
+
 \section{Categories}
+
+\begin{frame}
+\frametitle {GoF Object Oriented Categories}
+ In the book \textbf{Design Patterns}, the are the following categories:
+\begin{description}
+ \item [Creational] create resources instead of direct instantiation
+ \item [Structural] organise the structure of the data: hierarchy, composition
+ \item [Behavioral] drive the data flow, communication between objects
+\end{description}
+\end{frame}
+
+\begin{frame}
+\frametitle {GoF Creational Patterns}
+
+\begin{description}
+ \item [Abstract Factory] groups object factories that have a common theme.
+ \item [Builder constructs] complex objects by separating construction and representation.
+ \item [Factory Method] creates objects without specifying the exact class to create.
+ \item [Prototype] creates objects by cloning an existing object.
+ \item [Singleton] restricts object creation for a class to only one instance.
+\end{description}
+\end{frame}
+
+\begin{frame}
+\frametitle {GoF Structural Patterns}
+\begin{small}
+\begin{description}
+ \item [Adapter] allows classes with incompatible interfaces to work together by wrapping its own interface around that of an already existing class.
+ \item [Bridge] decouples an abstraction from its implementation so that the two can vary independently.
+ \item [Composite] composes zero-or-more similar objects so that they can be manipulated as one object.
+ \item [Decorator] dynamically adds/overrides behaviour in an existing method of an object.
+ \item [Facade] provides a simplified interface to a large body of code.
+ \item [Flyweight] reduces the cost of creating and manipulating a large number of similar objects.
+ \item [Proxy] provides a placeholder for another object to control access, reduce cost, and reduce complexity.
+\end{description}
+\end{small}
+\end{frame}
+
+\begin{frame}
+\frametitle {GoF Behavioral Patterns}
+
+\begin{scriptsize}
+\begin{description}
+ \item [Chain of responsibility] delegates commands to a chain of processing objects.
+ \item [Command] creates objects which encapsulate actions and parameters.
+ \item [Interpreter] implements a specialized language.
+ \item [Iterator] accesses the elements of an object sequentially without exposing its underlying representation.
+ \item [Mediator] allows loose coupling between classes by being the only class that has detailed knowledge of their methods.
+ \item [Memento] provides the ability to restore an object to its previous state (undo).
+ \item [Observer] is a publish/subscribe pattern which allows a number of observer objects to see an event.
+ \item [State] allows an object to alter its behavior when its internal state changes.
+ \item [Strategy] allows one of a family of algorithms to be selected on-the-fly at runtime.
+ \item [Template method] defines the skeleton of an algorithm as an abstract class, allowing its subclasses to provide concrete behavior.
+ \item [Visitor] separates an algorithm from an object structure by moving the hierarchy of methods into one object.
+\end{description}  
+\end{scriptsize}
+\end{frame}
+
+\begin{frame}
+\frametitle {Other known categories}
+
+\begin{description}
+ \item [Architectural] Large application scale patterns: core/plugin, data stores\dots
+ \item [Concurrency] concurrent programming techniques, including locking mechanisms, thread pooling\dots
+ \item [Testing] code testing patterns: mock objects, set-up/tear-down\dots
+ \item [Domain specific] Some patterns are very much domain specific
+\end{description}  
+\end{frame}
 
 \section{Concrete examples}
 
-\section{Word of Caution}
+\subsection{MVC Pattern}
+\begin{frame}
+\frametitle{MVC: Principle}
+NICE GRAPH BUT not going further
+\end{frame} 
+
+\subsection{Factory Pattern}
+\begin{frame}
+\frametitle{Factory Pattern: Principle}
+NICE GRAPH
+\end{frame} 
+
+\begin{frame}[fragile]
+\frametitle{Factory Pattern: Code} 
+\begin{minted} [fontsize=\footnotesize] {python}
+# Beautiful code
+\end{minted}
+\end{frame}
+
+\subsection{Adapter Pattern}
+\begin{frame}
+\frametitle{Adapter Pattern: Principle}
+NICE GRAPH
+\end{frame} 
+
+\begin{frame}[fragile]
+\frametitle{Adapter Pattern: Code} 
+\begin{minted} [fontsize=\footnotesize] {python}
+# Beautiful code
+\end{minted}
+\end{frame}
+
+
+
+\section{WordS of Caution}
 % language specific
 % always evolving: trends and falls
+\begin{frame}
+ \frametitle{Limitations}
+\begin{itemize}
+ \item Language specific patterns
+ \item Trends
+ \item Technical advances, obsolescence
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Singleton Pattern: Principle}
+\begin{itemize}
+ \item One instance shared all over the code: "global object"
+ \item Examples: config managers, Factories, Facade objects
+\end{itemize}
+\end{frame} 
+
+\begin{frame}
+\frametitle{Controversies: Singleton Pattern}
+\begin{itemize}
+ \item very much used, BUT
+ \item introducing global state never encouraged
+ \item tricky thread safety at initialisation (ultimately flawed in c++ due to uncertainty of dynamic loading order)
+\end{itemize}
+\end{frame} 
+
+
+
+\begin{frame}[fragile]
+\frametitle{Adapter Pattern: Code} 
+\begin{minted} [fontsize=\footnotesize] {python}
+# Beautiful code
+\end{minted}
+\end{frame}
+
 
 \section{Conclusions}
 \begin{frame}
-\frametitle{Conclusions} 
+\frametitle{Conclusions}
+
+
 There is so much more we can show...
  
 \end{frame}
