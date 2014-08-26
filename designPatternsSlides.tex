@@ -28,6 +28,8 @@
 
 \subject{Design Patterns}
 
+\definecolor{code_bg} {rgb}{0.95,0.95,0.95}
+
 \begin{document}
 \begin{frame}
   \titlepage
@@ -42,7 +44,7 @@
  \item Abstract, mysterious names
  \item universal magical answer to the spaghetti code I end up having at the end of my project
 \end{itemize}
-\centering \only<2->{\alert {Let's demystifies\dots}}
+\centering \only<2->{\alert {Let's demystify\dots}}
 \end{frame}
 
 \begin{frame}
@@ -70,7 +72,7 @@ authored by the \textbf{Gang Of Four} (\emph{Erich Gamma, Richard Helm, Ralph Jo
 They are \textbf{not}:
   \begin{itemize}
    \item tools (tools are editors or IDEs)
-   \item ready made one fits all solutions
+   \item ready made one size fits all solutions
   \end{itemize}
 \end{frame}
 
@@ -82,7 +84,8 @@ A Pattern is only complete if it comes with:
 \begin{itemize}
  \item a typical situation along with why it causes trouble
  \item a solution and the reason it is a good one.
- \item a context, when to apply to it.
+ \item a context, when to apply it.
+ \item limitations
 \end{itemize}
 \end{frame}
 
@@ -172,8 +175,64 @@ NICE GRAPH
 
 \begin{frame}[fragile]
 \frametitle{Factory Pattern: Code} 
-\begin{minted} [fontsize=\footnotesize] {python}
-# Beautiful code
+\begin{minted} [fontsize=\footnotesize,bgcolor=code_bg] {python}
+root = etree.Element('body')
+h1 = etree.Element('h1')
+h1.text = 'The Title'
+root.append(h1)
+p = etree.Element('p')
+p.text = 'Always write Python'
+root.append(p)
+
+from lmxl.builder import E
+
+doc = E('body',
+        E('h1', 'The Title'),
+        E('p', 'Always write Python'))
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Command Pattern}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Command Pattern: Code} 
+\begin{minted} [fontsize=\footnotesize,bgcolor=code_bg] {python}
+def paint_line(x1, y1, x2, y2): pass
+
+class PaintLineCommand(object):
+  def __init__(self, x1, y1, x2, y2):
+      self.x1, self.y1 = x1, y1
+      self.x2, self.y2 = x2, y2
+
+  def __call__(self):
+      paint_line(self.x1, self.y1, self.x2, self.y2)
+
+  def __str__(self):
+      return 'paint_line from {}/{} to {}/{}'.format(
+          self.x1, self.y1, self.x2, self.y2)
+
+cmd = PaintLineCommand(5, 23, 42, 123)
+cmd()
+logging.debug(cmd)
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Command Pattern: Code} 
+\begin{minted} [bgcolor=code_bg,fontsize=\footnotesize] {python}
+class PaintLineCommand(object):
+  # ...
+
+  def undo(self):
+      erase_line(self.x1, self.y1, self.x2, self.y2)
+
+
+cmd = PaintLineCommand(5, 23, 42, 123)
+cmd()
+command_history.append(cmd)
+command_history[-1].undo()
 \end{minted}
 \end{frame}
 
@@ -184,13 +243,38 @@ NICE GRAPH
 \end{frame} 
 
 \begin{frame}[fragile]
-\frametitle{Adapter Pattern: Code} 
-\begin{minted} [fontsize=\footnotesize] {python}
-# Beautiful code
+\frametitle{Adapter Pattern: Code}
+Python has the concept of a "file-like" object, which has read() and write(). Examples are \texttt{file} and \texttt{StringIO}, but \textbf{not} \texttt{socket} (it has \texttt{send()} and \texttt{recv()} instead). Luckily, we can get an Adapter from \texttt{socket} with \texttt{makefile()}:
+\bigskip
+\begin{minted} [fontsize=\footnotesize,bgcolor=code_bg] {python}
+import socket
+
+s = socket.socket(socket.AF_INET)
+s.connect(...)
+s.send('hello there')
+file_like_socket = s.makefile()
+file_like_socket.write('hi again')
 \end{minted}
 \end{frame}
 
-
+\begin{frame}[fragile]
+\frametitle{Python Perspective}
+Patterns don't have to be about object-oriented design. They can be something very simple.
+\linebreak
+\linebreak
+\begin{minted}[fontsize=\footnotesize,bgcolor=code_bg]{python}
+if 'page' in params:
+    page = params['page']
+else:
+    page = 1
+\end{minted}
+\linebreak
+Can be written as
+\linebreak
+\begin{minted}[fontsize=\footnotesize,bgcolor=code_bg]{python}
+page = params.get('page', 1)
+\end{minted}
+\end{frame}
 
 \section{WordS of Caution}
 % language specific
@@ -213,7 +297,7 @@ NICE GRAPH
 \end{frame} 
 
 \begin{frame}
-\frametitle{Controversies: Singleton Pattern}
+\frametitle{Singleton Pattern: Controversies}
 \begin{itemize}
  \item very much used, BUT
  \item introducing global state never encouraged
@@ -222,15 +306,97 @@ NICE GRAPH
 \end{itemize}
 \end{frame} 
 
-
+\begin{frame}
+\frametitle{Singleton Pattern: Python}
+There are many ways to implement it in Python.
+  \begin{itemize}
+   \item a module instead of a class
+   \item a class method instance() (does not enforce single instance)
+   \item implement \_\_new\_\_()
+   \item metaclass
+   \item ...
+   \item use the Monostate Pattern instead
+  \end{itemize}
+\end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Adapter Pattern: Code} 
-\begin{minted} [fontsize=\footnotesize] {python}
-# Beautiful code
+\frametitle{Singleton Pattern: IOLoop in Tornado}
+\begin{footnotesize}
+\begin{minted}[bgcolor=code_bg]{python}
+@staticmethod
+def instance():
+    """Returns a global `IOLoop` instance.
+       ...
+    """
+    if not hasattr(IOLoop, "_instance"):
+        with IOLoop._instance_lock:
+            if not hasattr(IOLoop, "_instance"):
+                # New instance after double check
+                IOLoop._instance = IOLoop()
+    return IOLoop._instance
+\end{minted}
+\end{footnotesize}
+\linebreak
+Q: But is it thread-safe?
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Singleton Pattern: Metaclass}
+\begin{minted}[bgcolor=code_bg]{python}
+class Singleton(type):
+    def __init__(cls, name, bases, attrs):
+        super(Singleton, cls).__init__(
+            cls, bases, attrs)
+        
+        cls._instance = None
+
+    def __call__(cls, *a, **k):
+        if cls._instance is None:
+            cls._instance = super(
+                Singleton, cls).__call__(*a, **k)
+
+        return cls._instance
 \end{minted}
 \end{frame}
 
+\begin{frame}[fragile]
+\frametitle{Singleton Pattern: Using the metaclass}
+\begin{minted}[bgcolor=code_bg]{python}
+class EventCounter(object):
+    __metaclass__ = Singleton
+
+    def __init__(self):
+        self.count = 0
+
+    def register_event(self):
+        self.count += 1
+\end{minted}
+
+\begin{verbatim}
+>>> a, b = EventCounter(), EventCounter()
+>>> b.count
+0
+>>> a.register_event()
+>>> b.count
+1
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Singleton Pattern: Alternative "Monostate"}
+\begin{minted}[bgcolor=code_bg]{python}
+class Borg(object):
+    _shared_state = {}
+
+    def __new__(cls, *a, **k):
+        obj = super(Borg, cls).__new__(cls, *a, **k)
+        obj.__dict__ = cls._shared_state
+        return obj
+
+
+class SevenOfNine(Borg): pass
+\end{minted}
+\end{frame}
 
 \section{Conclusions}
 \begin{frame}
@@ -241,12 +407,22 @@ There is so much more we can show...
  
 \end{frame}
 
-% \begin{frame}
-% \frametitle{Questions?}
-% \begin{center}
-% %   \includegraphics[height=.5\textheight]{Code-Refactoring-Cat-in-Bathtub.gif}
-% % look at animate.
-% \end{center}
-% \end{frame}
+\begin{frame}
+\frametitle{Links}
+
+  \begin{itemize}
+   \item Many Python examples from here: https://www.youtube.com/watch?v=Er5K\_nR5lDQ
+   \item Good talk by Alex Martelli at EuroPython: https://www.youtube.com/watch?v=bPJKYrZjq10
+  \end{itemize}
+
+\end{frame}
+
+ \begin{frame}
+ \frametitle{Questions?}
+ \begin{center}
+ %   \includegraphics[height=.5\textheight]{Code-Refactoring-Cat-in-Bathtub.gif}
+ % look at animate.
+ \end{center}
+ \end{frame}
 
 \end{document}
