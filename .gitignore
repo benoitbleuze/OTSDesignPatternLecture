@@ -5,4 +5,7 @@
 *.log
 *.out
 *.toc
-
+*.backup
+*.nav
+*.snm
+*.vrb

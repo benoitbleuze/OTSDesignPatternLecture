@@ -164,17 +164,21 @@ A Pattern is only complete if it comes with:
 \subsection{MVC Pattern}
 \begin{frame}
 \frametitle{MVC: Principle}
-NICE GRAPH BUT not going further
+\begin{center}
+   \includegraphics[width=\textwidth]{MVC.pdf}
+\end{center}
 \end{frame} 
 
-\subsection{Factory Pattern}
+\subsection{Creational Patterns}
 \begin{frame}
-\frametitle{Factory Pattern: Principle}
-NICE GRAPH
+\frametitle{Factory Method Pattern: Principle}
+\begin{center}
+   \includegraphics[width=\textwidth]{FactoryMethod.pdf}
+\end{center}
 \end{frame} 
 
 \begin{frame}[fragile]
-\frametitle{Factory Pattern: Code} 
+\frametitle{Factory Method Pattern: Code} 
 \begin{minted} [fontsize=\footnotesize,bgcolor=code_bg] {python}
 root = etree.Element('body')
 h1 = etree.Element('h1')
@@ -192,8 +196,37 @@ doc = E('body',
 \end{minted}
 \end{frame}
 
+\subsection{Structural Patterns}
+
+\begin{frame}
+\frametitle{Adapter Pattern: Principle}
+\begin{center}
+   \includegraphics[width=.8\textwidth]{Adapter.pdf}
+\end{center}
+\end{frame} 
+
 \begin{frame}[fragile]
-\frametitle{Command Pattern}
+\frametitle{Adapter Pattern: Code}
+Python has the concept of a "file-like" object, which has read() and write(). Examples are \texttt{file} and \texttt{StringIO}, but \textbf{not} \texttt{socket} (it has \texttt{send()} and \texttt{recv()} instead). Luckily, we can get an Adapter from \texttt{socket} with \texttt{makefile()}:
+\bigskip
+\begin{minted} [fontsize=\footnotesize,bgcolor=code_bg] {python}
+import socket
+
+s = socket.socket(socket.AF_INET)
+s.connect(...)
+s.send('hello there')
+file_like_socket = s.makefile()
+file_like_socket.write('hi again')
+\end{minted}
+\end{frame}
+
+\subsection{Behavioral Patterns}
+
+\begin{frame}[fragile]
+\frametitle{Command Pattern: Principle}
+\begin{center}
+   \includegraphics[width=\textwidth]{Command.pdf}
+\end{center}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -236,27 +269,6 @@ command_history[-1].undo()
 \end{minted}
 \end{frame}
 
-\subsection{Adapter Pattern}
-\begin{frame}
-\frametitle{Adapter Pattern: Principle}
-NICE GRAPH
-\end{frame} 
-
-\begin{frame}[fragile]
-\frametitle{Adapter Pattern: Code}
-Python has the concept of a "file-like" object, which has read() and write(). Examples are \texttt{file} and \texttt{StringIO}, but \textbf{not} \texttt{socket} (it has \texttt{send()} and \texttt{recv()} instead). Luckily, we can get an Adapter from \texttt{socket} with \texttt{makefile()}:
-\bigskip
-\begin{minted} [fontsize=\footnotesize,bgcolor=code_bg] {python}
-import socket
-
-s = socket.socket(socket.AF_INET)
-s.connect(...)
-s.send('hello there')
-file_like_socket = s.makefile()
-file_like_socket.write('hi again')
-\end{minted}
-\end{frame}
-
 \begin{frame}[fragile]
 \frametitle{Python Perspective}
 Patterns don't have to be about object-oriented design. They can be something very simple.
@@ -293,16 +305,6 @@ page = params.get('page', 1)
 \begin{itemize}
  \item One instance shared all over the code: "global object"
  \item Examples: config managers, Factories, Facade objects
-\end{itemize}
-\end{frame} 
-
-\begin{frame}
-\frametitle{Singleton Pattern: Controversies}
-\begin{itemize}
- \item very much used, BUT
- \item introducing global state never encouraged
- \item tricky thread safety at initialisation (ultimately flawed in c++ due to uncertainty of dynamic loading order)
- \item overused: situations REALLY needing a singleton are rare
 \end{itemize}
 \end{frame} 
 
@@ -397,6 +399,16 @@ class Borg(object):
 class SevenOfNine(Borg): pass
 \end{minted}
 \end{frame}
+
+\begin{frame}
+\frametitle{Singleton Pattern: Controversies}
+\begin{itemize}
+ \item very much used, BUT
+ \item introducing global state never encouraged
+ \item tricky thread safety at initialisation (ultimately flawed in c++ due to uncertainty of dynamic loading order)
+ \item overused: situations REALLY needing a singleton are rare
+\end{itemize}
+\end{frame} 
 
 \section{Conclusions}
 \begin{frame}

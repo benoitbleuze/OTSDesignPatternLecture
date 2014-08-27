@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="21cm" height="14cm" viewBox="40 3 413 265" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #ffffff" x="41" y="102" width="79.3" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="41" y="102" width="79.3" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="80.65" y="121">Client</text>
+    <rect style="fill: #ffffff" x="41" y="130" width="79.3" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="41" y="130" width="79.3" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="44" y="144">-Adaptor</text>
+    <rect style="fill: #ffffff" x="41" y="150" width="79.3" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="41" y="150" width="79.3" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="44" y="164">+doWork()</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="219" y="4" width="87" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="219" y="4" width="87" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="262.5" y="23">Adaptee</text>
+    <rect style="fill: #ffffff" x="219" y="32" width="87" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="219" y="32" width="87" height="8"/>
+    <rect style="fill: #ffffff" x="219" y="40" width="87" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="219" y="40" width="87" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="222" y="54">+methodX()</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="219" y="106" width="87" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="219" y="106" width="87" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="262.5" y="125">Adaptor</text>
+    <rect style="fill: #ffffff" x="219" y="134" width="87" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="219" y="134" width="87" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="222" y="148">+Adaptee</text>
+    <rect style="fill: #ffffff" x="219" y="154" width="87" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="219" y="154" width="87" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="222" y="168">+method1()</text>
+  </g>
+  <g>
+    <polygon style="fill: #ffffff" points="295,201 439.6,201 451.6,213 451.6,267 295,267 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="295,201 439.6,201 451.6,213 451.6,267 295,267 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="439.6,201 439.6,213 451.6,213 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="302" y="225.9">
+      <tspan x="302" y="225.9">...</tspan>
+      <tspan x="302" y="241.9">adaptee.methodX();</tspan>
+      <tspan x="302" y="257.9">...</tspan>
+    </text>
+  </g>
+  <g>
+    <polygon style="fill: #ffffff" points="85,200 221.9,200 233.9,212 233.9,266 85,266 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="85,200 221.9,200 233.9,212 233.9,266 85,266 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="221.9,200 221.9,212 233.9,212 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="92" y="224.9">
+      <tspan x="92" y="224.9">...</tspan>
+      <tspan x="92" y="240.9">adaptor.method1()</tspan>
+      <tspan x="92" y="256.9">...</tspan>
+    </text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="145.472,140 135.3,140 216.995,140 217.995,140 "/>
+    <polygon style="fill: #ffffff" points="120.3,140 134.3,135.2 148.3,140 134.3,144.8 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="120.3,140 134.3,135.2 148.3,140 134.3,144.8 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="262,76.8284 262,74.5035 262.5,74.5035 262.5,61.0071 "/>
+    <polygon style="fill: #ffffff" points="262,102 257.2,88 262,74 266.8,88 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="262,102 257.2,88 262,74 266.8,88 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="308,167 373.3,167 373.3,193.286 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="368.3,180.639 373.3,196.639 378.3,180.639 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="120.3,160 159.45,160 159.45,192.286 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="154.45,179.639 159.45,195.639 164.45,179.639 "/>
+  </g>
+</svg>
