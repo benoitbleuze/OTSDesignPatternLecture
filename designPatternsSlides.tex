@@ -169,6 +169,17 @@ A Pattern is only complete if it comes with:
 \end{center}
 \end{frame} 
 
+\subsection{MVC Pattern}
+\begin{frame}
+\frametitle{MVC: Variations}
+\begin{itemize}
+ \item Qt uses \textbf{MV} pattern
+ \item Django uses \textbf{MVT} pattern
+ \item <only 2->Everybody's loose interpretation of "where do my controller stops and my view starts" 
+\end{itemize}
+
+\end{frame}
+
 \subsection{Creational Patterns}
 \begin{frame}
 \frametitle{Factory Method Pattern: Principle}
@@ -374,6 +385,7 @@ class EventCounter(object):
         self.count += 1
 \end{minted}
 
+\begin{small}
 \begin{verbatim}
 >>> a, b = EventCounter(), EventCounter()
 >>> b.count
@@ -382,6 +394,7 @@ class EventCounter(object):
 >>> b.count
 1
 \end{verbatim}
+\end{small}
 \end{frame}
 
 \begin{frame}[fragile]
